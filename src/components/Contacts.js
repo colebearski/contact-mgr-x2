@@ -31,13 +31,21 @@ class Contacts extends Component {
     // };
   };
 
+  deleteContact = () => {
+    console.log("hi");
+  };
+
   render() {
     const { contacts } = this.state;
     return (
       <React.Fragment>
         {/* contact is getting passed as props to Contact.js */}
         {contacts.map(contact => (
-          <Contact key={contact.id} contact={contact} />
+          <Contact
+            key={contact.id}
+            contact={contact}
+            deleteClickHandler={this.deleteContact}
+          />
         ))}
       </React.Fragment>
     );

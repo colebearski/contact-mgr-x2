@@ -15,7 +15,8 @@ class Contact extends Component {
   };
 
   onDeleteClick = e => {
-    console.log("clicked");
+    // creating a prop to pass to Contacts.js
+    this.props.deleteClickHandler();
   };
 
   render() {
@@ -45,7 +46,8 @@ class Contact extends Component {
 
 // Proptypes
 Contact.propTypes = {
-  contact: PropTypes.object.isRequired
+  contact: PropTypes.object.isRequired,
+  deleteClickHandler: PropTypes.func.isRequired
 };
 
 export default Contact;
