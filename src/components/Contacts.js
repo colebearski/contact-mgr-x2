@@ -29,7 +29,6 @@ class Contacts extends Component {
       }
     ]
     // };
-    // test
   };
 
   render() {

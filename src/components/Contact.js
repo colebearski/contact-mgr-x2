@@ -14,6 +14,10 @@ class Contact extends Component {
     this.setState({ showContactInfo: !this.state.showContactInfo });
   };
 
+  onDeleteClick = e => {
+    console.log("clicked");
+  };
+
   render() {
     // DESTRUCTURING
     const { contact } = this.props;
@@ -25,7 +29,8 @@ class Contact extends Component {
           {/* you can bind additional parameters to the function  */}
           {/* this.onShowClick.bind(this, name, etc..) */}
           {contact.name}{" "}
-          <i onClick={this.onShowClick} className="fas fa-sort-down" />
+          <i onClick={this.onShowClick} className="showBtn fas fa-sort-down" />
+          <i onClick={this.onDeleteClick} className="deleteBtn fas fa-times" />
         </h4>
         {showContactInfo ? (
           <ul className="list-group">
