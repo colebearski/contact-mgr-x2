@@ -1,5 +1,4 @@
 // rcc Class Based Component
-// rcf.. Functional Based Component
 import React, { Component } from "react";
 
 class Contact extends Component {
