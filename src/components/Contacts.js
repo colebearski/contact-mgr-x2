@@ -35,6 +35,7 @@ class Contacts extends Component {
     const { contacts } = this.state;
     return (
       <React.Fragment>
+        {/* contact is getting passed as props to Contact.js */}
         {contacts.map(contact => (
           <Contact key={contact.id} contact={contact} />
         ))}

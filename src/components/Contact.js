@@ -16,7 +16,7 @@ class Contact extends Component {
 
   render() {
     // DESTRUCTURING
-    const { name, email, phone } = this.props.contact;
+    const { contact } = this.props;
     const { showContactInfo } = this.state;
     return (
       <div className="card card-body mb-3">
@@ -24,12 +24,13 @@ class Contact extends Component {
           {/* {this.onshowClick} BECAUSE IT'S A METHOD INSIDE THIS CLASS */}
           {/* you can bind additional parameters to the function  */}
           {/* this.onShowClick.bind(this, name, etc..) */}
-          {name} <i onClick={this.onShowClick} className="fas fa-sort-down" />
+          {contact.name}{" "}
+          <i onClick={this.onShowClick} className="fas fa-sort-down" />
         </h4>
         {showContactInfo ? (
           <ul className="list-group">
-            <li className="list-group-item">Email: {email}</li>
-            <li className="list-group-item">Phone: {phone}</li>
+            <li className="list-group-item">Email: {contact.email}</li>
+            <li className="list-group-item">Phone: {contact.phone}</li>
           </ul>
         ) : null}
       </div>
