@@ -3,6 +3,22 @@ import React, { Component } from "react";
 
 const Context = React.createContext();
 
+const reducer = (state, action) => {
+  // Evaluate action type that gets called
+  switch (action.type) {
+    case "DELETE_CONTACT":
+      return {
+        // Filters out the ID which is sent thru the payload
+        ...state,
+        contacts: state.contacts.filter(
+          contact => contact.id !== action.payload
+        )
+      };
+    default:
+      return state;
+  }
+};
+
 // This file now holds our Application State
 export class Provider extends Component {
   state = {
@@ -25,7 +41,8 @@ export class Provider extends Component {
         email: "tesla@gmail.com",
         phone: "777-777-7777"
       }
-    ]
+    ],
+    dispatch: action => this.setState(state => reducer(state, action))
   };
 
   // This Provider gives off a Value holding the State
