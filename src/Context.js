@@ -9,6 +9,7 @@ const reducer = (state, action) => {
     case "DELETE_CONTACT":
       return {
         // Filters out the ID which is sent thru the payload
+        // ... means.. gather the remaining parameteres into an array
         ...state,
         contacts: state.contacts.filter(
           contact => contact.id !== action.payload

@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import Contact from "./Contact";
 // Any component we want to use the Context 'state' with we bring in the Consumer
-import { Consumer } from "../Context";
+import { Consumer } from "../../Context";
 
 class Contacts extends Component {
   // Return the Consumer tag with the Value passed early, which was the entire State
