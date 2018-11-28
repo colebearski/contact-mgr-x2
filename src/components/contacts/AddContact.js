@@ -7,14 +7,27 @@ class AddContact extends Component {
     phone: ""
   };
 
+  // Updates state for form values
+  onChange = e => this.setState({ [e.target.name]: e.target.value });
+
+  // Form Submit func
+  onSubmit = e => {
+    e.preventDefault();
+    console.log(this.state);
+  };
+
+  // Next create an action, that goes to the context reducer, 'like delete', and then add it to the state
+
   render() {
+    // Destructuring
+    // so we don't have to call value={this.state.name}..
     const { name, email, phone } = this.state;
 
     return (
       <div className="card mb-3">
         <div className="card-header">Add Contact</div>
         <div className="card-body">
-          <form>
+          <form onSubmit={this.onSubmit}>
             <div className="form-group">
               <label htmlFor="name">Name</label>
               <input
@@ -23,6 +36,7 @@ class AddContact extends Component {
                 className="form-control form-control-lg"
                 placeholder="Enter Name..."
                 value={name}
+                onChange={this.onChange}
               />
             </div>
 
@@ -34,6 +48,7 @@ class AddContact extends Component {
                 className="form-control form-control-lg"
                 placeholder="Enter Email..."
                 value={email}
+                onChange={this.onChange}
               />
             </div>
 
@@ -45,6 +60,7 @@ class AddContact extends Component {
                 className="form-control form-control-lg"
                 placeholder="Enter Phone..."
                 value={phone}
+                onChange={this.onChange}
               />
             </div>
           </form>
