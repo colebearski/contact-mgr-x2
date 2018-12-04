@@ -1,52 +1,64 @@
-// import React, { Component } from "react";
+import React, { Component } from "react";
 
-// class Test extends Component {
-//   state = {
-//     test: "test"
-//   };
+class Test extends Component {
+  state = {
+    title: "",
+    body: ""
+  };
 
-//   componentDidMount() {
-//     console.log("componentDidMount...");
-//   }
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/todos/1")
+      .then(response => response.json())
+      .then(data =>
+        this.setState({
+          title: data.title,
+          body: data.body
+        })
+      );
+  }
 
-//   componentWillMount() {
-//     console.log("componentWillMount...");
-//     // UNSAFE_
-//   }
+  //   componentWillMount() {
+  //     console.log("componentWillMount...");
+  //     // UNSAFE_
+  //   }
 
-//   componentDidUpdate() {
-//     console.log("componentDidUpdate...");
-//   }
+  //   componentDidUpdate() {
+  //     console.log("componentDidUpdate...");
+  //   }
 
-//   componentWillUpdate() {
-//     console.log("componentWillUpdate...");
-//     // UNSAFE_
-//   }
+  //   componentWillUpdate() {
+  //     console.log("componentWillUpdate...");
+  //     // UNSAFE_
+  //   }
 
-//   componentWillReceiveProps(nextProps, nextState) {
-//     console.log("WillReceiveProps");
-//     // UNSAFE_
-//   }
+  //   componentWillReceiveProps(nextProps, nextState) {
+  //     console.log("WillReceiveProps");
+  //     // UNSAFE_
+  //   }
 
-//   static getDerivedStateFromProps(nextProps, prevState) {
-//     // return state or return null
-//     return null;
-//   }
+  //   static getDerivedStateFromProps(nextProps, prevState) {
+  //     // return state or return null
+  //     return null;
+  //   }
 
-//   getSnapshotBeforeUpdate(prevProps, prevState) {
-//     console.log("manipulate things as we need");
-//   }
+  //   getSnapshotBeforeUpdate(prevProps, prevState) {
+  //     console.log("manipulate things as we need");
+  //   }
 
-//   render() {
-//     return (
-//       <div>
-//         <h1>Test Component</h1>
-//       </div>
-//     );
-//   }
-// }
+  render() {
+    // Destructure
+    const { title, body } = this.state;
 
-// export default Test;
+    return (
+      <div>
+        <h1>{title}</h1>
+        <p>{body}</p>
+      </div>
+    );
+  }
+}
+
+export default Test;
 
 // ComponentDidMount
 // whatever is placed in function fires once it's mounted
