@@ -52,6 +52,9 @@ class AddContact extends Component {
       phone: "",
       errors: {}
     });
+
+    // Redirect
+    this.props.history.push("/");
   };
 
   // Next create an action, that goes to the context reducer, 'like delete', and then add it to the state
