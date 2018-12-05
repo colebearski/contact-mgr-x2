@@ -34,11 +34,22 @@ export class Provider extends Component {
     dispatch: action => this.setState(state => reducer(state, action))
   };
 
-  componentDidMount() {
-    axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then(res => this.setState({ contacts: res.data }));
+  // Refactor, neater syntax
+  // Adding async/await to axios
+  // assign a variable to the response and the do what we want
+  async componentDidMount() {
+    const res = await axios.get("https://jsonplaceholder.typicode.com/users");
+
+    this.setState({
+      contacts: res.data
+    });
   }
+
+  // componentDidMount() {
+  //   axios
+  //     .get("https://jsonplaceholder.typicode.com/users")
+  //     .then(res => this.setState({ contacts: res.data }));
+  // }
 
   // This Provider gives off a Value holding the State
   // value can take pieces of state, but we passed the entire State
