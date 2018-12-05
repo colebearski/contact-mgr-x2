@@ -16,7 +16,7 @@ class AddContact extends Component {
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   // Form Submit func
-  onSubmit = (dispatch, e) => {
+  onSubmit = async (dispatch, e) => {
     e.preventDefault();
     console.log(this.state);
     const { name, email, phone } = this.state;
@@ -45,9 +45,11 @@ class AddContact extends Component {
     };
 
     // Post request to fake rest api
-    axios
-      .post("https://jsonplaceholder.typicode.com/users", newContact)
-      .then(res => dispatch({ type: "ADD_CONTACT", payload: res.data }));
+    const res = await axios.post(
+      "https://jsonplaceholder.typicode.com/users",
+      newContact
+    );
+    dispatch({ type: "ADD_CONTACT", payload: res.data });
 
     // Clear state
     this.setState({
