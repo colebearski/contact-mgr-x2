@@ -1,5 +1,6 @@
 // Context API || Global State
 import React, { Component } from "react";
+import axios from "axios";
 
 const Context = React.createContext();
 
@@ -29,28 +30,15 @@ const reducer = (state, action) => {
 // This file now holds our Application State
 export class Provider extends Component {
   state = {
-    contacts: [
-      {
-        id: 1,
-        name: "Henry Ford",
-        email: "mustang@gmail.com",
-        phone: "444-444-4444"
-      },
-      {
-        id: 2,
-        name: "Bill Gates",
-        email: "microsoft@gmail.com",
-        phone: "555-555-5555"
-      },
-      {
-        id: 3,
-        name: "Elon Musk",
-        email: "tesla@gmail.com",
-        phone: "777-777-7777"
-      }
-    ],
+    contacts: [],
     dispatch: action => this.setState(state => reducer(state, action))
   };
+
+  componentDidMount() {
+    axios
+      .get("https://jsonplaceholder.typicode.com/users")
+      .then(res => this.setState({ contacts: res.data }));
+  }
 
   // This Provider gives off a Value holding the State
   // value can take pieces of state, but we passed the entire State
@@ -64,3 +52,16 @@ export class Provider extends Component {
 }
 
 export const Consumer = Context.Consumer;
+
+// axios.get('https://jsonplaceholder.typicode.com/users').then(res =>
+//       this.setState({
+//         contacts: res.data.map(i => {
+//           return {
+//             id: i.id,
+//             name: i.name,
+//             address: `${i.address.suite} ${i.address.street}`,
+//             email: i.email
+//           };
+//         })
+//       })
+//     );
