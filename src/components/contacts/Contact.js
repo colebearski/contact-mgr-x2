@@ -1,5 +1,6 @@
 // rcc Class Based Component
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Consumer } from "../../Context";
 import axios from "axios";
@@ -35,7 +36,9 @@ class Contact extends Component {
   render() {
     // DESTRUCTURING
     const { contact } = this.props;
+    // const { id } = this.props.contact;
     const { showContactInfo } = this.state;
+
     return (
       <Consumer>
         {value => {
@@ -56,6 +59,17 @@ class Contact extends Component {
                   onClick={this.onDeleteClick.bind(this, contact.id, dispatch)}
                   className="deleteBtn fas fa-times"
                 />
+                <Link to={`contact/edit/${this.props.contact.id}`}>
+                  <i
+                    className="fas fa-pencil-alt"
+                    style={{
+                      cursor: "pointer",
+                      float: "right",
+                      color: "black",
+                      marginRight: "1rem"
+                    }}
+                  />
+                </Link>
               </h4>
               {showContactInfo ? (
                 <ul className="list-group">
