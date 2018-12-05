@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// changed browserrouter to hashrouter for deploy
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 // COMPONENTS
 import Contacts from "./components//contacts/Contacts";
 import Header from "./components/layout/Header";
